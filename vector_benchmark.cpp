@@ -181,7 +181,7 @@ int main() {
      int deletions = 10;
      int step = array.size() / insertions; 
      for (int i = 0; i < array.size(); i += step) {
-     array[i] = 0;
+          array[i] = 0;
      } 
      // Insert 1 next to existing 0s
      for (int i = 0; i < array.size(); ++i) {
@@ -196,7 +196,7 @@ int main() {
      for (int i = 0; i < deletions; ++i) {
      bool success = deleteByValue(array, 1); 
      if (!success) { 
-          cout << "Failed at delete 100k items";
+          cout << "Failed at #delete items";
           break; 
      }
      }
@@ -206,8 +206,10 @@ int main() {
      << "ms\n";
      
      start = chrono::high_resolution_clock::now();
-     // delete 100 scattered items 
-     for (int i = 50'00'000; i < 50'00'100; ++i) {
+     // delete # scattered items 
+     int deleteFrom  = 100'000*run;
+     int deleteTill = 100'000*run + 100;
+     for (int i = deleteFrom; i < deleteTill; ++i) {
           deleteByValue(array, i);
      }
      end = chrono::high_resolution_clock::now();
