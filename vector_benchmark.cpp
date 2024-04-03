@@ -165,9 +165,10 @@ int main() {
      }
      auto end = chrono::high_resolution_clock::now();
      cout << "Pre-allocate Time: " 
-     << chrono::duration_cast<chrono::milliseconds>(end - start).count() 
-     << "ms\n";
-     int run = 5;
+          << chrono::duration_cast<chrono::milliseconds>(end - start).count() 
+          << "ms\n";
+     
+     int run = 2;
      while (run>0){
           benchmarkLookupByValue(array);
           benchmarkInsert(array);
@@ -198,18 +199,11 @@ int main() {
      
      start = chrono::high_resolution_clock::now();
      // delete # scattered items 
-     int deleteFrom  = 40'000'000;
-     int deleteTill = deleteFrom + 100'000;
-     int delCount = 0;
-     while (true) {
-          bool success = deleteByValue(array, 1); 
-          if (success) {
-               delCount++;
-               if (delCount == 100) break;
-          }
+     int deletions = 100;
+     while (deletions>0) {
+          deleteByValue(array, 1);
+          deletions--; 
      }
-     cout << delCount
-          << "\n";
      end = chrono::high_resolution_clock::now();
      cout << "Heavy Delete Time: " 
      << chrono::duration_cast<chrono::milliseconds>(end - start).count() 
@@ -232,40 +226,35 @@ int main() {
 }
 
 // Sequential access with no array copies
+// 2 shot 100 mil
 // Memory 382MB 
-// CPU ~ 17% - used around 8 vCPUs
-// Lookup By Value Time: 63ms
-// In nanosecs: 63643400ns
-// Insert (Beginning) Time: 64ms
-// Insert (q1) Time: Success 34ms
-// Insert (Middle) Time: Success 35ms
+// CPU MAX ~ 14%
+// Pre-allocate Time: 256ms
+// Lookup By Value Time: 64ms
+// In nanosecs: 64612900ns
+// Insert (Beginning) Time: 62ms
+// Insert (q1) Time: Success 40ms
+// Insert (Middle) Time: Success 34ms
 // Insert (q3) Time: Success 34ms
-// Insert (End) Time: 500ns
-// Delete (Beginning) Time: 24ms
-// Delete (q1) Time: Success 24ms
-// Delete (Middle) Time: Success 25ms
+// Insert (End) Time: 400ns
+// Delete (Beginning) Time: 23ms
+// Delete (q1) Time: Success 25ms
+// Delete (Middle) Time: Success 23ms
 // Delete (q3) Time: Success 23ms
 // Delete (End) Time: 100ns
 // Lookup By Value Time: 0ms
-// In nanosecs: 200ns
-// Insert (Beginning) Time: 34ms
-// Insert (q1) Time: Success 35ms
-// Insert (Middle) Time: Success 35ms
-// Insert (q3) Time: Success 34ms
-// Insert (End) Time: 400ns
-// Delete (Beginning) Time: 25ms
-// Delete (q1) Time: Success 23ms
+// In nanosecs: 100ns
+// Insert (Beginning) Time: 35ms
+// Insert (q1) Time: Success 31ms
+// Insert (Middle) Time: Success 34ms
+// Insert (q3) Time: Success 33ms
+// Insert (End) Time: 200ns
+// Delete (Beginning) Time: 23ms
+// Delete (q1) Time: Success 24ms
 // Delete (Middle) Time: Success 23ms
 // Delete (q3) Time: Success 24ms
 // Delete (End) Time: 100ns
-
-// Random Access
-// Memory 300MB - 1GB, avg 600MB 
-// CPU ~ 16% - used around 4 vCPUs
-// Lookup By Value Time: 64ms
-// Insert (Beginning) Time: 60ms
-// Insert (Middle) Time: 18ms
-// Insert (End) Time: 300ns
-// Delete (Beginning) Time: 23ms
-// Delete (Middle) Time: 11ms
-// Delete (End) Time: 100ns
+// Heavy Time: 1694ms
+// Heavy Delete Time: 2681ms
+// 107360143194569021
+// Heavy Lookup Time: 25ms

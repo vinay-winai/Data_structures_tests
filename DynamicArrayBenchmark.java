@@ -15,21 +15,19 @@ public class DynamicArrayBenchmark {
         }
         long end = System.currentTimeMillis();
         System.out.println("Pre-allocation Time: " + (end - start) + "ms");
-        int run = 5;
+        int run = 2;
         while (run>0){
             benchmarkLookupByValue(array);
             benchmarkInsert(array);
             benchmarkDelete(array);
-        run--;
+            run--;
         }
-        int insertions = 100; 
-        int deletions = 10;
-
         // Change values to 0
+        int insertions = 100;
         start = System.nanoTime();
         int step = array.size() / insertions; 
         for (int i = 0; i < array.size(); i += step) {
-            array.set(i, 0);  // Use .set for efficiency
+            array.set(i, 0);
         } 
 
         // Insert 1 next to 0s
@@ -41,23 +39,17 @@ public class DynamicArrayBenchmark {
                 }
             }
         }
-
-        // Perform deletions by value (deleting '1')
-        for (int i = 0; i < deletions; ++i) {
-            boolean success = deleteByValue(array, 1); 
-            if (!success) { 
-                System.out.println("Failed at #delete items");
-                break; 
-            }
-        }
         end = System.nanoTime();
         long heavyTime = TimeUnit.NANOSECONDS.toMillis(end - start);
         System.out.println("Heavy Time: " + heavyTime + "ms");
 
         // Delete # scattered items 
         start = System.nanoTime();
-        for (int i = 50_000_000; i < 50_000_100; ++i) {
-            deleteByValue(array, i);
+        int deletions = 100;
+        while (deletions>0) {
+            int index = array.indexOf(1);
+            array.remove(index);
+            deletions--;
         }
         end = System.nanoTime();
         long heavyDeleteTime = TimeUnit.NANOSECONDS.toMillis(end - start);
@@ -188,41 +180,36 @@ public class DynamicArrayBenchmark {
     }
 }
 
-// sequential access
+// Sequential 2 shot 100 mil
 // Memory ~ 3GB fixed
-// CPU ~ 70% - used all 12 vCPUs
-// Lookup By Value Time: 331ms
-// Lookup in ns: 331545500ns
-// Insert (Beginning) Time: 325ms
-// Insert (q1) Time: 59ms
-// Insert (Middle) Time: 88ms
-// Insert (q3) Time: 85ms
-// Insert (End) Time: 3us
-// Delete (Beginning) Time: 89ms
-// Delete (q1) Time: 88ms
-// Delete (Middle) Time: 85ms
-// Delete (q3) Time: 91ms
-// Delete (End) Time: 9us
-// Lookup By Value Time: 0ms
-// Lookup in ns: 2300ns
-// Insert (Beginning) Time: 91ms
-// Insert (q1) Time: 87ms
-// Insert (Middle) Time: 88ms
-// Insert (q3) Time: 86ms
-// Insert (End) Time: 2us
-// Delete (Beginning) Time: 86ms
-// Delete (q1) Time: 84ms
-// Delete (Middle) Time: 89ms
-// Delete (q3) Time: 87ms
-// Delete (End) Time: 3us
-
-// Best
-// Memory ~ 3GB fixed
-// CPU ~ 40% - used all 12 vCPUs
-// Lookup By Value Time: 288ms
-// Insert (Beginning) Time: 78ms
-// Insert (Middle) Time: 48ms
-// Insert (End) Time: 3us
+// CPU ~ 75% - used all 12 vCPUs
+// Pre-allocation Time: 3378ms
+// Lookup By Value Time: 577ms
+// Lookup in ns: 577878900ns
+// Insert (Beginning) Time: 1212ms
+// Insert (q1) Time: 88ms
+// Insert (Middle) Time: 83ms
+// Insert (q3) Time: 88ms
+// Insert (End) Time: 6us
 // Delete (Beginning) Time: 90ms
-// Delete (Middle) Time: 46ms
-// Delete (End) Time: 5us
+// Delete (q1) Time: 89ms
+// Delete (Middle) Time: 84ms
+// Delete (q3) Time: 96ms
+// Delete (End) Time: 7us
+// Lookup By Value Time: 0ms
+// Lookup in ns: 2800ns
+// Insert (Beginning) Time: 91ms
+// Insert (q1) Time: 99ms
+// Insert (Middle) Time: 96ms
+// Insert (q3) Time: 98ms
+// Insert (End) Time: 2us
+// Delete (Beginning) Time: 89ms
+// Delete (q1) Time: 96ms
+// Delete (Middle) Time: 96ms
+// Delete (q3) Time: 91ms
+// Delete (End) Time: 2us
+// Heavy Time: 3640ms
+// Heavy Delete Time: 9551ms
+// 107376563538362572
+// Heavy Lookup Time: 125ms
+

@@ -114,7 +114,7 @@ if __name__ == "__main__":
     array = array_generator(ARRAY_SIZE)
     end = time.perf_counter_ns()
     print(f"Pre-allocate Time: {(end - start)/ 1e9}s")  
-    run = 5
+    run = 2
     while run > 0:
         benchmark_lookup_by_value(array)
         benchmark_insert(array)
@@ -124,11 +124,7 @@ if __name__ == "__main__":
 
 # sequential access
 # Memory ~ 4.7GB fixed
-# CPU ~ 15% - used all 4 vCPUs
-
-
-# Lookup By Value Time: 0.0012ms
-# In nanosecs: 1200ns
+# CPU MAX ~ 15% 
 # Pre-allocate Time: 56.4956791s
 # Lookup By Value Time: 2319.6686ms
 # In nanosecs: 2319668600ns
@@ -142,6 +138,8 @@ if __name__ == "__main__":
 # Delete (Middle) Time: 48.4375ms
 # Delete (q3) Time: 47.5464ms
 # Delete (End) Time: 5200ns
+# Lookup By Value Time: 0.0013ms
+# In nanosecs: 1300ns
 # Insert (Beginning) Time: 88.2901ms
 # Insert (q1) Time: 86.3329ms
 # Insert (Middle) Time: 83.7199ms
@@ -154,28 +152,30 @@ if __name__ == "__main__":
 # Delete (End) Time: 3300ns
 
 # jit
-# Lookup By Value Time: 0.0009ms
-# In nanosecs: 900ns
-# Pre-allocate Time: 4.0960867s
-# Lookup By Value Time: 2732.2539ms
-# In nanosecs: 2732253900ns
-# Insert (Beginning) Time: 330.1893ms
-# Insert (q1) Time: 87.3683ms
-# Insert (Middle) Time: 83.7902ms
-# Insert (q3) Time: 85.7951ms
-# Insert (End) Time: 3100ns
-# Delete (Beginning) Time: 53.9158ms
-# Delete (q1) Time: 52.6279ms
-# Delete (Middle) Time: 59.0801ms
-# Delete (q3) Time: 66.343ms
-# Delete (End) Time: 1900ns
-# Insert (Beginning) Time: 87.9431ms
-# Insert (q1) Time: 83.0772ms
-# Insert (Middle) Time: 85.4076ms
-# Insert (q3) Time: 87.7507ms
-# Insert (End) Time: 2600ns
-# Delete (Beginning) Time: 54.8807ms
-# Delete (q1) Time: 52.0578ms
-# Delete (Middle) Time: 51.4013ms
-# Delete (q3) Time: 47.9779ms
-# Delete (End) Time: 2300ns
+# Memory ~ 4GB fixed
+# CPU MAX ~ 14%
+# Pre-allocate Time: 4.2389849s
+# Lookup By Value Time: 2759.5135ms
+# In nanosecs: 2759513500ns
+# Insert (Beginning) Time: 348.3433ms
+# Insert (q1) Time: 85.0826ms
+# Insert (Middle) Time: 89.8416ms
+# Insert (q3) Time: 81.6592ms
+# Insert (End) Time: 2700ns
+# Delete (Beginning) Time: 48.8973ms
+# Delete (q1) Time: 45.8119ms
+# Delete (Middle) Time: 48.2149ms
+# Delete (q3) Time: 46.9324ms
+# Delete (End) Time: 2100ns
+# Lookup By Value Time: 0.0010ms
+# In nanosecs: 1000ns
+# Insert (Beginning) Time: 81.8384ms
+# Insert (q1) Time: 84.3123ms
+# Insert (Middle) Time: 83.536ms
+# Insert (q3) Time: 82.5903ms
+# Insert (End) Time: 1800ns
+# Delete (Beginning) Time: 46.5631ms
+# Delete (q1) Time: 52.8479ms
+# Delete (Middle) Time: 46.5652ms
+# Delete (q3) Time: 46.9594ms
+# Delete (End) Time: 2800ns
