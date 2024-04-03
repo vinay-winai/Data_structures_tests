@@ -169,36 +169,27 @@ int main() {
      << "ms\n";
      int run = 5;
      while (run>0){
-               benchmarkLookupByValue(array);
-               benchmarkInsert(array);
-               benchmarkDelete(array);
+          benchmarkLookupByValue(array);
+          benchmarkInsert(array);
+          benchmarkDelete(array);
      run--;
      }
-     
+
      start = chrono::high_resolution_clock::now();
      // Change values to 0 at multiples of array length / #insertions
      int insertions = 100;
-     int deletions = 10;
      int step = array.size() / insertions; 
      for (int i = 0; i < array.size(); i += step) {
           array[i] = 0;
      } 
      // Insert 1 next to existing 0s
      for (int i = 0; i < array.size(); ++i) {
-     if (array[i] == 0) {
-          if (i < array.size() - 1) {  // Ensure we don't insert beyond bounds
-               array.insert(array.begin() + i + 1, 1);
-               ++i;  // Skip over the inserted element
+          if (array[i] == 0) {
+               if (i < array.size() - 1) {  // Ensure we don't insert beyond bounds
+                    array.insert(array.begin() + i + 1, 1);
+                    ++i;  // Skip over the inserted element
+               }
           }
-     }
-     }
-     // Perform  #deletions by value (deleting '1')
-     for (int i = 0; i < deletions; ++i) {
-     bool success = deleteByValue(array, 1); 
-     if (!success) { 
-          cout << "Failed at #delete items";
-          break; 
-     }
      }
      end = chrono::high_resolution_clock::now();
      cout << "Heavy Time: " 
@@ -207,11 +198,18 @@ int main() {
      
      start = chrono::high_resolution_clock::now();
      // delete # scattered items 
-     int deleteFrom  = 100'000*run;
-     int deleteTill = 100'000*run + 100;
-     for (int i = deleteFrom; i < deleteTill; ++i) {
-          deleteByValue(array, i);
+     int deleteFrom  = 40'000'000;
+     int deleteTill = deleteFrom + 100'000;
+     int delCount = 0;
+     while (true) {
+          bool success = deleteByValue(array, 1); 
+          if (success) {
+               delCount++;
+               if (delCount == 100) break;
+          }
      }
+     cout << delCount
+          << "\n";
      end = chrono::high_resolution_clock::now();
      cout << "Heavy Delete Time: " 
      << chrono::duration_cast<chrono::milliseconds>(end - start).count() 
