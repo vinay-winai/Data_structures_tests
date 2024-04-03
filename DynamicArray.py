@@ -115,17 +115,10 @@ if __name__ == "__main__":
     end = time.perf_counter_ns()
     print(f"Pre-allocate Time: {(end - start)/ 1e9}s")  
     run = 5
-    
-    
-    
-    
-    
     while run > 0:
         benchmark_lookup_by_value(array)
         benchmark_insert(array)
-        benchmark_delete(array)
-        
-        
+        benchmark_delete(array)    
         run -= 1
 
 
