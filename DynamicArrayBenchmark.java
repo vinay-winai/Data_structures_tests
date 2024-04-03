@@ -213,3 +213,34 @@ public class DynamicArrayBenchmark {
 // 107376563538362572
 // Heavy Lookup Time: 125ms
 
+
+// Sequential 2 shot 10 mil
+// Pre-allocation Time: 189ms
+// Lookup By Value Time: 45ms
+// Lookup in ns: 45029400ns
+// Insert (Beginning) Time: 28ms
+// Insert (q1) Time: 8ms
+// Insert (Middle) Time: 9ms
+// Insert (q3) Time: 8ms
+// Insert (End) Time: 9us
+// Delete (Beginning) Time: 6ms
+// Delete (q1) Time: 6ms
+// Delete (Middle) Time: 8ms
+// Delete (q3) Time: 6ms
+// Delete (End) Time: 8us
+// Lookup By Value Time: 0ms
+// Lookup in ns: 2500ns
+// Insert (Beginning) Time: 9ms
+// Insert (q1) Time: 11ms
+// Insert (Middle) Time: 7ms
+// Insert (q3) Time: 8ms
+// Insert (End) Time: 7us
+// Delete (Beginning) Time: 6ms
+// Delete (q1) Time: 6ms
+// Delete (Middle) Time: 8ms
+// Delete (q3) Time: 9ms
+// Delete (End) Time: 2us
+// Heavy Time: 178ms
+// Heavy Delete Time: 865ms
+// 10735875620229077
+// Heavy Lookup Time: 17ms

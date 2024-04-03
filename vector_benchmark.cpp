@@ -258,3 +258,34 @@ int main() {
 // Heavy Delete Time: 2681ms
 // 107360143194569021
 // Heavy Lookup Time: 25ms
+
+// Sequential 2 shot 10 mil
+// Pre-allocate Time: 25ms
+// Lookup By Value Time: 6ms
+// In nanosecs: 6976200ns
+// Insert (Beginning) Time: 5ms
+// Insert (q1) Time: Success 3ms
+// Insert (Middle) Time: Success 3ms
+// Insert (q3) Time: Success 3ms
+// Insert (End) Time: 400ns
+// Delete (Beginning) Time: 2ms
+// Delete (q1) Time: Success 2ms
+// Delete (Middle) Time: Success 2ms
+// Delete (q3) Time: Success 2ms
+// Delete (End) Time: 100ns
+// Lookup By Value Time: 0ms
+// In nanosecs: 200ns
+// Insert (Beginning) Time: 3ms
+// Insert (q1) Time: Success 3ms
+// Insert (Middle) Time: Success 3ms
+// Insert (q3) Time: Success 4ms
+// Insert (End) Time: 400ns
+// Delete (Beginning) Time: 3ms
+// Delete (q1) Time: Success 2ms
+// Delete (Middle) Time: Success 2ms
+// Delete (q3) Time: Success 2ms
+// Delete (End) Time: 100ns
+// Heavy Time: 147ms
+// Heavy Delete Time: 247ms
+// 10740104882810568
+// Heavy Lookup Time: 2ms
