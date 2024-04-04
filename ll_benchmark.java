@@ -169,7 +169,7 @@ public class ll_benchmark {
 
 // Sequential 2 shot 100 mil
 // Memory 4.5GB 
-// CPU MAX~ 86%
+// CPU MAX~ 86% This high usage is only during preallocation.
 // Pre-allocate Time: 29904ms
 // Lookup By Value Time: 1552ms
 // In nanosecs: 1552128500ns
