@@ -169,7 +169,7 @@ public class ll_benchmark {
 
 // Sequential 2 shot 100 mil
 // Memory 4.5GB 
-// CPU MAX~ 86% - used all 12 vCPUs
+// CPU MAX~ 86%
 // Pre-allocate Time: 29904ms
 // Lookup By Value Time: 1552ms
 // In nanosecs: 1552128500ns

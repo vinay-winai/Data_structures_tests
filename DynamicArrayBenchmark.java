@@ -182,7 +182,7 @@ public class DynamicArrayBenchmark {
 
 // Sequential 2 shot 100 mil
 // Memory ~ 3GB fixed
-// CPU ~ 75% - used all 12 vCPUs
+// CPU MAX ~ 75%
 // Pre-allocation Time: 3378ms
 // Lookup By Value Time: 577ms
 // Lookup in ns: 577878900ns

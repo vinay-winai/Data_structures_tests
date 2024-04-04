@@ -215,7 +215,7 @@ int main() {
 
 // Sequential 2 shot 100 mil
 // Memory 3GB 
-// CPU MAX~ 16% - used around 4 vCPUs
+// CPU MAX ~ 16%
 // Pre-allocate Time: 3812ms
 // Lookup By Value Time: 2262ms
 // In nanosecs: 2262663600ns
