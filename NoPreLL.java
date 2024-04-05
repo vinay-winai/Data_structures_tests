@@ -45,5 +45,9 @@ public class NoPreLL {
 }
 
 // Results 100k
+// best after jit warm-up
 // Total time taken to insert 100000 numbers: 68827 ms
 // Deleted, 0 numbers left. Time: 70944 ms
+// avg
+// Total time taken to insert 100000 numbers: 78942 ms     
+// Deleted, 0 numbers left. Time: 86152 ms
