@@ -31,8 +31,7 @@ public class NoPreLL {
             BufferedReader deleteFile = new BufferedReader(new FileReader("delete.txt"));
             startTime = System.nanoTime();
             while ((line = deleteFile.readLine()) != null) {
-                int idx = numbers.indexOf(Integer.parseInt(line));
-                numbers.remove(idx);
+                numbers.remove((Integer) Integer.parseInt(line));
             }
             deleteFile.close();
             endTime = System.nanoTime();
@@ -44,10 +43,12 @@ public class NoPreLL {
     }
 }
 
-// Results 100k
+// Results 100k ops by index
 // best after jit warm-up
 // Total time taken to insert 100000 numbers: 68827 ms
 // Deleted, 0 numbers left. Time: 70944 ms
 // avg
 // Total time taken to insert 100000 numbers: 78942 ms     
 // Deleted, 0 numbers left. Time: 86152 ms
+
+// Deleted by value ~ 50000 ms

@@ -86,8 +86,6 @@ package main
 
 // LinkedList
 
-// package main
-
 // import (
 // 	"bufio"
 // 	"container/list"
@@ -174,7 +172,7 @@ package main
 
 // Binary Search
 
-// package main
+
 
 // import (
 // 	"bufio"
