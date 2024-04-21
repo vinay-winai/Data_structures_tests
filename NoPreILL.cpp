@@ -99,3 +99,7 @@ int main() {
 
     return 0;
 }
+
+// Results 100k
+// Total time taken to insert 100000 numbers: 24206 ms
+// Deleted, 0 numbers left. Time: 26928 ms
