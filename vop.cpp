@@ -18,13 +18,12 @@ int main() {
 
   int num;
   while (file >> num) {
-    // Find insertion position (similar to previous code)
+    // Find insertion position
     auto it = numbers.begin();
     while (it != numbers.end() && *(*it) < num) {
       ++it;
     }
-
-    // Insert at the found position (need to adjust pointer manipulation)
+    // Insert the new number
     numbers.insert(it, new int(num));
   }
   file.close();
